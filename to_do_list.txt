@@ -1,0 +1,21 @@
+1. DONE Mettre le modèle de pendule au propre
+2. Faire une exploration du modèle dans un notebook
+* Voir le nommage des notebooks selon CCDS
+* Mesure de temps
+* Affichage des graphes
+* Création d'une expérience bruitée ?
+* Correlations ? Franchement je m'en blc
+* Je pourrais faire un truc du genre analyse de chaque paramètre du modèle, voir l'impact etc...
+  Voir les periodicités sur l'angle
+  Deviner des multimodalités?
+3. Générer des données
+* Une expérience aléatoire
+* Une base d'apprentissage ?
+* Transformer les données (normalisation en gros)
+* Différentes tailles de jeux de données pour tester l'apprentissage?
+* Dans tous les cas j'enregistrerai qu'un seul NN dans un dossier assets, pour chaque physics_model
+4. Module Réseau de Neurones
+* Création modulaire
+* Entrainement
+* Evaluation
+* Visualisation
