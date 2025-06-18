@@ -19,9 +19,9 @@ def rejection_sampling_uniform(f, xmin, xmax, N,  *args, **kwargs):
     N : int
         Number of samples to generate.
     *args : tuple, optional
-        Additional positional arguments to pass to the target function `f`.
+        Additional positional arguments to pass to the target function `f`
     **kwargs : dict, optional
-        Additional keyword arguments to pass to the target function `f`.
+        Additional keyword arguments to pass to the target function `f`
 
     Returns
     -------
@@ -29,23 +29,29 @@ def rejection_sampling_uniform(f, xmin, xmax, N,  *args, **kwargs):
         Array of length `N` containing the accepted samples.
     M : float
         Final estimate of the maximum value of f(x) encountered during sampling
+    acceptance_rate : float
+        Ratio of accepted samples to the total number of proposals made
     """
     
     x0 = np.random.uniform(xmin, xmax)
     M = f(x0, *args, **kwargs)        # First estimate of M
     samples = []
+    total_trials = 0
 
     while len(samples) < N:
         X = np.random.uniform(xmin, xmax) # Proposal
         fX = f(X, *args, **kwargs)
+        total_trials += 1
         if fX > M:
             M = fX
             samples = []
+            total_trials = 0
             continue
 
         U = np.random.uniform(0, 1) # Likelihood ratio
         if U <= fX / M:
             samples.append(X)
 
-    return np.array(samples), M
+    acceptance_rate = N / total_trials
+    return np.array(samples), M, acceptance_rate
 
